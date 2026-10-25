@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Juegos en Tendencia</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #101018;
+      color: white;
+      padding-bottom: 30px;
+    }
+
+    header {
+      background: #171725;
+      padding: 25px 15px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header h1 {
+      font-size: 28px;
+      margin-bottom: 15px;
+    }
+
+    header p {
+      color: #aaa;
+      margin-bottom: 15px;
+    }
+
+    #buscador {
+      width: 100%;
+      max-width: 500px;
+      padding: 13px;
+      border: none;
+      border-radius: 10px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    .contenedor {
+      max-width: 700px;
+      margin: auto;
+      padding: 20px 15px;
+    }
+
+    .juego {
+      background: #1b1b29;
+      border-radius: 15px;
+      margin-bottom: 18px;
+      padding: 18px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    }
+
+    .juego h2 {
+      margin-bottom: 8px;
+    }
+
+    .tendencia {
+      display: inline-block;
+      background: #ff4757;
+      padding: 5px 9px;
+      border-radius: 8px;
+      font-size: 12px;
+      margin-bottom: 12px;
+    }
+
+    .juego p {
+      color: #ccc;
+      line-height: 1.5;
+      margin-bottom: 15px;
+    }
+
+    .boton {
+      display: inline-block;
+      background: #5865f2;
+      color: white;
+      text-decoration: none;
+      padding: 11px 18px;
+      border-radius: 9px;
+      font-weight: bold;
+    }
+
+    .boton:hover {
+      background: #4752c4;
+    }
+
+    #mensaje {
+      text-align: center;
+      color: #aaa;
+      display: none;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>🎮 Juegos en Tendencia</h1>
+    <p>Descubre juegos populares y conoce de qué trata cada uno.</p>
+
+    <input
+      type="text"
+      id="buscador"
+      placeholder="🔎 Buscar un juego..."
+    >
+  </header>
+
+  <main class="contenedor">
+
+    <div class="juego">
+      <span class="tendencia">🔥 EN TENDENCIA</span>
+      <h2>Roblox</h2>
+      <p>
+        Una plataforma donde puedes jugar diferentes experiencias
+        creadas por otros usuarios y también crear las tuyas.
+      </p>
+      <a
+        class="boton"
+        href="https://www.roblox.com/"
+        target="_blank"
+      >
+        🎮 Jugar
+      </a>
+    </div>
+
+    <div class="juego">
+      <span class="tendencia">🔥 EN TENDENCIA</span>
+      <h2>Minecraft</h2>
+      <p>
+        Un juego de construcción y exploración donde puedes crear
+        estructuras, explorar mundos y jugar con otras personas.
+      </p>
+      <a
+        class="boton"
+        href="https://www.minecraft.net/"
+        target="_blank"
+      >
+        🎮 Ver juego
+      </a>
+    </div>
+
+    <div class="juego">
+      <span class="tendencia">🔥 EN TENDENCIA</span>
+      <h2>Fortnite</h2>
+      <p>
+        Un juego multijugador con diferentes modos de juego,
+        construcción y combates.
+      </p>
+      <a
+        class="boton"
+        href="https://www.fortnite.com/"
+        target="_blank"
+      >
+        🎮 Ver juego
+      </a>
+    </div>
+
+    <div class="juego">
+      <span class="tendencia">🔥 EN TENDENCIA</span>
+      <h2>Brawl Stars</h2>
+      <p>
+        Juego multijugador con partidas rápidas y diferentes
+        personajes, modos y mapas.
+      </p>
+      <a
+        class="boton"
+        href="https://supercell.com/en/games/brawlstars/"
+        target="_blank"
+      >
+        🎮 Ver juego
+      </a>
+    </div>
+
+    <p id="mensaje">No encontramos ese juego 😕</p>
+
+  </main>
+
+  <script>
+    const buscador = document.getElementById("buscador");
+    const juegos = document.querySelectorAll(".juego");
+    const mensaje = document.getElementById("mensaje");
+
+    buscador.addEventListener("input", function () {
+      const texto = buscador.value.toLowerCase();
+      let encontrados = 0;
+
+      juegos.forEach(function (juego) {
+        const contenido = juego.textContent.toLowerCase();
+
+        if (contenido.includes(texto)) {
+          juego.style.display = "block";
+          encontrados++;
+        } else {
+          juego.style.display = "none";
+        }
+      });
+
+      mensaje.style.display = encontrados === 0 ? "block" : "none";
+    });
+  </script>
+
+</body>
+</html>
